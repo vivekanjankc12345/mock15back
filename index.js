@@ -9,6 +9,30 @@ app.use(cors({
 const {connection}=require("./Config/db")
 const {postmodel}=require("./Model/Postmodel")
 app.use(express.json());
+app.get("/sort",async(req,res)=>{
+  let que=req.body;
+  let sortBy=req.query.sortby;
+  console.log(sortBy)
+  let order=req.query.order;
+  console.log(order)
+  let get=await postmodel.find(que);
+  if(sortBy==="BudgetPerPerson" && order==="asc")
+  {
+    get.sort((a,b)=>{
+      return a.BudgetPerPerson-b.BudgetPerPerson;
+    })
+    res.send(get)
+  }
+  if(sortBy==="BudgetPerPerson" && order==="desc")
+  {
+    get.sort((a,b)=>{
+      return b.BudgetPerPerson-a.BudgetPerPerson;
+    })
+    res.send(get)
+  }
+ 
+ 
+})
 app.get("/get",async(req,res)=>{
   try
   {
