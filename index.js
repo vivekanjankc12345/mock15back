@@ -3,7 +3,9 @@ const app=express();
 var cors = require('cors')
 
  
-app.use(cors())
+app.use(cors({
+  origin:"*"
+}))
 const {connection}=require("./Config/db")
 const {postmodel}=require("./Model/Postmodel")
 app.use(express.json());
