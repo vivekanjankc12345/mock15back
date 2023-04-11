@@ -3,7 +3,7 @@ const app=express();
 const {connection}=require("./Config/db")
 const {postmodel}=require("./Model/Postmodel")
 app.use(express.json());
-app.get("/",async(req,res)=>{
+app.get("/get",async(req,res)=>{
   try
   {
     let que=req.body;
