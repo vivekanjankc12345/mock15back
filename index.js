@@ -1,5 +1,9 @@
 const express =require("express");
 const app=express();
+var cors = require('cors')
+
+ 
+app.use(cors())
 const {connection}=require("./Config/db")
 const {postmodel}=require("./Model/Postmodel")
 app.use(express.json());
