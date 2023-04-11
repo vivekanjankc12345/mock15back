@@ -22,6 +22,19 @@ app.get("/get",async(req,res)=>{
       console.log(err)
   }
 })
+app.get("/filter",async(req,res)=>{
+  try
+  {
+    let que=req.query;
+    const get=await postmodel.find(que);
+    res.send(get)
+  }
+  
+    catch(err)
+    {
+      console.log(err)
+  }
+})
 app.post("/post",async(req,res)=>{
   const payload=req.body;
   try{
